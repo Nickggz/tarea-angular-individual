@@ -1,0 +1,60 @@
+@let t = tarea();
+<article class="card" [class.cerrada]="t.estado === 'Cerrada'" [attr.data-id]="t.id_tarea">
+  @if (modo() === 'ver') {
+    <header class="card-header">
+      <span class="id">#{{ t.id_tarea }}</span>
+      <span class="badge estado" [class.abierta]="t.estado === 'Abierta'">{{ t.estado }}</span>
+    </header>
+
+    <h3 class="titulo">{{ t.titulo }}</h3>
+    <p class="descripcion">{{ t.descripcion }}</p>
+
+    <dl class="datos">
+      <div><dt>Grupo</dt><dd>{{ t.grupo }}</dd></div>
+      <div><dt>Prioridad</dt><dd>{{ t.prioridad }}</dd></div>
+      <div><dt>Creada</dt><dd>{{ t.creada | date: 'dd/MM/yyyy HH:mm' }}</dd></div>
+      <div><dt>Terminada</dt><dd>{{ t.terminada ? (t.terminada | date: 'dd/MM/yyyy HH:mm') : '-' }}</dd></div>
+    </dl>
+
+    <footer class="card-acciones">
+      <button type="button" (click)="editar.emit(t.id_tarea)">Editar</button>
+      <button type="button" class="peligro" (click)="eliminar.emit(t.id_tarea)">Eliminar</button>
+    </footer>
+  } @else {
+    <form novalidate (submit)="submitForm($event)">
+      <div class="campo">
+        <label for="titulo">Título</label>
+        <input id="titulo" type="text" [formField]="tareaForm.titulo" />
+      </div>
+
+      <div class="campo">
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" rows="3" [formField]="tareaForm.descripcion"></textarea>
+      </div>
+
+      <div class="fila">
+        <div class="campo">
+          <label for="grupo">Grupo</label>
+          <select id="grupo" [formField]="tareaForm.grupo">
+            @for (g of grupos; track g) {
+              <option [value]="g">{{ g }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="prioridad">Prioridad</label>
+          <select id="prioridad" [formField]="tareaForm.prioridad">
+            @for (p of prioridades; track p) {
+              <option [value]="p">{{ p }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <footer class="card-acciones">
+        <button type="submit" class="primario">Guardar</button>
+      </footer>
+    </form>
+  }
+</article>

@@ -1,0 +1,11 @@
+@let usuario = this.usuario();
+@if (usuario) {
+  <h2>Editar usuario #{{ usuario.id_usuario }}</h2>
+
+  <app-usuario-form
+    [usuario]="usuario"
+    (guardarUsuario)="onGuardarUsuario($event)"
+  ></app-usuario-form>
+} @else {
+  <p>Cargando usuario con id: {{ this.id_usuario() }}</p>
+}

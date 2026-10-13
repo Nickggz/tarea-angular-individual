@@ -1,0 +1,10 @@
+@let tarea = this.tarea();
+@if (tarea) {
+  <h2>Editar tarea #{{ tarea.id_tarea }}</h2>
+
+  <div class="contenedor-card">
+    <app-tarea-card [tarea]="tarea" modo="editar" (guardar)="onGuardar($event)"></app-tarea-card>
+  </div>
+} @else {
+  <p>Cargando tarea con id: {{ this.id_tarea() }}</p>
+}

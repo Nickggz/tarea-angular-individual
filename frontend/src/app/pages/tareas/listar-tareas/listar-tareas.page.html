@@ -1,0 +1,17 @@
+<div class="encabezado">
+  <h2>Tareas</h2>
+  <a class="boton primario" routerLink="/tareas/crear">+ Crear tarea</a>
+</div>
+
+<div class="grilla-tarjetas">
+  @for (tarea of tareas(); track tarea.id_tarea) {
+    <app-tarea-card
+      [tarea]="tarea"
+      modo="ver"
+      (editar)="onEditar($event)"
+      (eliminar)="onEliminar($event)"
+    ></app-tarea-card>
+  } @empty {
+    <p>No hay tareas.</p>
+  }
+</div>

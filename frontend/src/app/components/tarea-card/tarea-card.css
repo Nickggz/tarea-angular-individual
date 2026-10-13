@@ -1,0 +1,32 @@
+:host { display: block; }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: white;
+  border: 1px solid var(--color-borde);
+  border-left: 4px solid var(--color-primario);
+  border-radius: 8px;
+  padding: 1rem;
+}
+.card.cerrada { border-left-color: #98a2b3; opacity: 0.85; }
+
+.card-header { display: flex; justify-content: space-between; align-items: center; }
+.id { color: var(--color-suave); font-size: 0.85rem; }
+
+.badge.estado { background: #eaecf0; color: var(--color-suave); }
+.badge.estado.abierta { background: #dcfae6; color: #067647; }
+
+.titulo { margin: 0.5rem 0 0.3rem; font-size: 1.05rem; }
+.descripcion { margin: 0 0 0.6rem; color: #475467; font-size: 0.9rem; }
+
+.datos { margin: 0 0 0.8rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem 1rem; font-size: 0.83rem; }
+.datos dt { color: var(--color-suave); }
+.datos dd { margin: 0; }
+
+
+.card-acciones { display: flex; gap: 0.5rem; margin-top: auto; padding-top: 0.5rem; }
+
+form .card-header { margin-bottom: 0.8rem; }
+.fila { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }

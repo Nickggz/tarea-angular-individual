@@ -1,0 +1,44 @@
+<form novalidate class="formulario" (submit)="submitForm($event)">
+  <div class="campo">
+    <label for="username">Username</label>
+    <input id="username" type="text" [formField]="usuarioForm.username" />
+  </div>
+
+  <div class="campo">
+    <label for="nombres">Nombres</label>
+    <input id="nombres" type="text" [formField]="usuarioForm.nombres" />
+  </div>
+
+  <div class="campo">
+    <label for="apellidos">Apellidos</label>
+    <input id="apellidos" type="text" [formField]="usuarioForm.apellidos" />
+  </div>
+
+  <div class="campo">
+    <label for="fecha_nacimiento">Fecha de nacimiento</label>
+    <input id="fecha_nacimiento" type="date" [formField]="usuarioForm.fecha_nacimiento" />
+  </div>
+
+  <fieldset class="campo">
+    <legend>Grupos</legend>
+    @for (grupo of grupos; track grupo) {
+      <label class="check">
+        <input
+          type="checkbox"
+          [id]="'grupo-' + grupo"
+          [value]="grupo"
+          [checked]="usuarioModel().grupos.includes(grupo)"
+          (change)="onGrupoToggle(grupo, $event)"
+        />
+        {{ grupo }}
+      </label>
+    }
+  </fieldset>
+
+  <label class="check">
+    <input id="activo" type="checkbox" [formField]="usuarioForm.activo" />
+    Activo
+  </label>
+
+  <button type="submit" class="primario">Guardar</button>
+</form>

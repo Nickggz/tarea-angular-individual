@@ -1,0 +1,98 @@
+/* En este archivo van los estilos globales de la aplicación (colores, botones, tablas y
+   formularios). Sirve para que todas las páginas y componentes se vean iguales. Angular lo
+   carga automáticamente porque está declarado en "styles" de angular.json. */
+
+:root {
+  --color-primario: #1f4e8c;
+  --color-primario-hover: #173c6b;
+  --color-peligro: #b42318;
+  --color-borde: #d0d5dd;
+  --color-fondo: #f5f7fa;
+  --color-texto: #1d2939;
+  --color-suave: #667085;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--color-texto);
+  background: var(--color-fondo);
+}
+
+h2 { margin: 0 0 1rem; }
+
+button, .boton {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  background: white;
+  color: var(--color-texto);
+  font: inherit;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+button:hover, .boton:hover { background: #eef1f5; }
+
+button.primario, .boton.primario {
+  background: var(--color-primario);
+  border-color: var(--color-primario);
+  color: white;
+}
+button.primario:hover, .boton.primario:hover { background: var(--color-primario-hover); }
+
+button.peligro { color: var(--color-peligro); border-color: #f1b3ad; }
+button.peligro:hover { background: #fef3f2; }
+
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.encabezado h2 { margin: 0; }
+
+.tabla-contenedor { overflow-x: auto; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #eaecf0;
+  font-size: 0.92rem;
+}
+th { background: #f0f3f7; font-weight: 600; }
+td.acciones { white-space: nowrap; }
+td.acciones button + button { margin-left: 0.4rem; }
+
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  margin-right: 0.25rem;
+  border-radius: 999px;
+  background: #e8eef7;
+  color: var(--color-primario);
+  font-size: 0.78rem;
+}
+
+.campo { display: flex; flex-direction: column; gap: 0.3rem; margin-bottom: 0.9rem; }
+.campo label, legend { font-weight: 600; font-size: 0.9rem; }
+input[type='text'], input[type='date'], select, textarea {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 6px;
+  font: inherit;
+  background: white;
+}
+fieldset.campo { border: 1px solid var(--color-borde); border-radius: 6px; padding: 0.5rem 0.8rem; }
+.check { display: flex; align-items: center; gap: 0.4rem; font-weight: normal; margin-bottom: 0.4rem; }
